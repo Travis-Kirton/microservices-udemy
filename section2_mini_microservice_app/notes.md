@@ -36,6 +36,10 @@
 - `POST ('/posts/:id/comments')`
   - body of `{content: 'post text'}`
 
+#### Query Service
+
+- `GET ('/posts)`
+- `POST ('/events)`
 ---
 
 #### Frontend
@@ -49,6 +53,27 @@
   - PostCreate
 
 
+##### Design Solutions
+
+- <b>Solution #1</b> - Sync communication
+  - have a GET request to Posts Service > gets comments for Post ID
+  - (Downside) service dependency, waiting on API calls
+
+
+- <b>Solution #2</b> - Async communication
+  - Have each service (Post, Comment, Query) emit an event to Event Broker
+  - Query Service will emit event when Post/Comment created
+  - Query Service may have data structure to keep track of posts/comments picked up by Event Bus/Broker
+
+
+---
+
+#### Event Bus
+
+- Recieve Event to POST /events
+- POST to localhost:4000/events
+- POST to localhost:4001/events
+- POST to localhost:4002/events 
 
 
 

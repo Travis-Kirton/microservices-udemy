@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default ({postId}) => {
+export default ({ postId }) => {
 
     const [content, setContent] = useState('');
 
@@ -17,9 +17,9 @@ export default ({postId}) => {
             <form onSubmit={onSubmit}>
                 <div className="form-group">
                     <label>New Comment</label>
-                    <input value={content} 
-                           onChange={e => setContent(e.target.value)} 
-                           className="form-control"></input>
+                    <input value={content}
+                        onChange={e => setContent(e.target.value)}
+                        className="form-control"></input>
                 </div>
                 <button className="btn btn-primary">Submit</button>
             </form>
