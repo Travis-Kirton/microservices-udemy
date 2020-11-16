@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: posts-srv
+spec:
+  type: NodePort
+  selector:
+    app: posts # select Pods with label 'app: posts' to expose
+  ports:
+    - name: posts
+      protocol: TCP
+      port: 4000 # port for the NodePort service
+      targetPort: 4000 # port which application is listening on

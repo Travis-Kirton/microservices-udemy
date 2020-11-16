@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: posts-depl
+spec:
+  replicas: 1 # create 1 pod
+  selector:
+    matchLabels:
+      app: posts # in charge of all pods with app: posts label
+  template:
+    metadata:
+      labels:
+        app: posts # give label to pod created within deployment
+    spec:
+      containers:
+        - name: posts
+          image: travistkirton/posts:latest
+
+# Configuration for Cluster IP
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: posts-clusterip-srv
+spec:
+  selector:
+    app: posts
+  type: ClusterIP
+  ports:
+    - name: posts
+      protocol: TCP
+      port: 4000
+      targetPort: 4000
