@@ -1,8 +1,6 @@
 #### Section 4: Orchestration With Kubernetes
 
  ---
- 
- (minikube start --vm=true)
 
  ##### Kubernetes Workflow
 
@@ -20,7 +18,7 @@
 
 ##### Terminology
 
-  - <b>Cluster:</b> A collection of notes + a master to manage them
+  - <b>Cluster:</b> A collection of nodes + a master to manage them
   - <b>Node:</b> A VM to run our containers
   - <b>Pod:</b> More or less a running container, (could run multiple containers)
   - <b>Deployment:</b> Monitors a set of pods, make sure they are running and restart if any crash
@@ -61,6 +59,16 @@ spec: (attributes to apply to pod)
 - <b>Load Balancer:</b> Makes a pod accessible from outside the cluster. This is the right way to expose a pod to the outside world
 - <b>External Name:</b> Redirects an in-cluster request to a CNAME url
 
+##### Load Balancer Service & Ingress
+
+- Load balancer Service tells Kubernetes to reach out to it's provider and provision a load balancer. Gets traffic in to a single pod
+  - Provider = AWS/GCP/Azure, to provision a load balancer
+- Ingress Controller is a pod with a set of routing rules to distribute traffic to other services
+
+
+##### Ingress-Nginx (https://kubernetes.github.io/ingress-nginx/deploy/)
+- a
+
 ##### Kubernetes Commands
 
 - `kubectl apply -f <filename>`
@@ -69,8 +77,7 @@ spec: (attributes to apply to pod)
 - `kubectl logs [pod_name]`
 - `kubectl delete pod [pod_name]`
 - `kubectl describe pod [pod_name]`
+- `kubectl rollout restart deployment [deployment_name]`
 
 
-
-
-###### Setup: see `/infra` folder
+##### Setup: see `/infra` folder

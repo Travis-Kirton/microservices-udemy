@@ -14,9 +14,9 @@ app.post('/events', async (req, res) => {
     events.push(event);
 
     await axios.post('http://posts-clusterip-srv:4000/events', event); // Posts Service
-    //await axios.post('http://localhost:4001/events', event); // Comments Service
-    //await axios.post('http://localhost:4002/events', event); // Query Service
-    // await axios.post('http://localhost:4003/events', event); // Moderation Service
+    await axios.post('http://comments-srv:4001/events', event); // Comments Service
+    await axios.post('http://query-srv:4002/events', event); // Query Service
+    await axios.post('http://moderation-srv:4003/events', event); // Moderation Service
 
     res.send({ status: 'OK' });
 });
